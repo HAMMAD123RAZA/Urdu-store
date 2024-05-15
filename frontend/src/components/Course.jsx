@@ -33,12 +33,10 @@ const Course = () => {
         return (
             <>
             <Cards key={item.id} item={item} />
-            
             </>
         )
     })}
                 </div>
-
     </>
   )
 }
