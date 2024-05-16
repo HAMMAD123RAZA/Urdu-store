@@ -16,6 +16,7 @@ const SignUp = () => {
         email,
         password
       });
+
       console.log(response.data); // Log the response from the server
       // Reset form fields after successful submission
       setFullName('');

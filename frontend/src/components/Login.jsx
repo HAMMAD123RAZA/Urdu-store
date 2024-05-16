@@ -14,6 +14,8 @@ const Login = () => {
         email,password
     })
     console.log(data.data)
+    localStorage.setItem("User",JSON.stringify(data.data))
+
     setEmail('');
     setPassword('');
     alert('User LoggedIn successfully!');
