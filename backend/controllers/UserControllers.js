@@ -1,6 +1,9 @@
 import express from "express"
 import User from "../model/userModel.js"
 import bcrypt  from "bcryptjs"
+import jwt from "jsonwebtoken"
+
+
 
 export const signUp = async (req, res) => {
     try {
@@ -32,18 +35,23 @@ export const login = async (req, res) => {
             return res.status(400).json({ message: "Invalid email or password" });
         }
         const comparePs = await bcrypt.compare(password, user.password);
-        if (!comparePs) {
-            return res.status(400).json({ message: "Invalid email or password" });
-        } else {
-            return res.status(200).json({
-                message: "Login Successful",
-                user: {
-                    _id: user._id,
-                    fullName: user.fullName,
-                    email: user.email
-                }
-            });
-        }
+// Inside the login function
+if (!comparePs) {
+    return res.status(400).json({ message: "Invalid email or password" });
+} else {
+    // Generate token
+    const token = jwt.sign({ userId: user._id }, 'your_secret_key', { expiresIn: '1h' }); // Adjust expiry as needed
+    return res.status(200).json({
+        message: "Login Successful",
+        user: {
+            _id: user._id,
+            fullName: user.fullName,
+            email: user.email
+        },
+        token: token // Send token to the client
+    });
+}
+
     } catch (error) {
         console.log("Error", error);
         res.status(500).json({ message: "Internal server error" });
