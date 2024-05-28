@@ -35,12 +35,12 @@ export const login = async (req, res) => {
             return res.status(400).json({ message: "Invalid email or password" });
         }
         const comparePs = await bcrypt.compare(password, user.password);
-// Inside the login function
-if (!comparePs) {
+
+        if (!comparePs) {
     return res.status(400).json({ message: "Invalid email or password" });
 } else {
     // Generate token
-    const token = jwt.sign({ userId: user._id }, 'your_secret_key', { expiresIn: '1h' }); // Adjust expiry as needed
+    const token = jwt.sign({ userId: user._id }, 'your_secret_key');
     return res.status(200).json({
         message: "Login Successful",
         user: {
@@ -48,7 +48,7 @@ if (!comparePs) {
             fullName: user.fullName,
             email: user.email
         },
-        token: token // Send token to the client
+        token: token 
     });
 }
 

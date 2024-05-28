@@ -6,8 +6,11 @@ import FreeBook from './FreeBook'
 const Home = () => {
   return (
     <>
-<Banner/>
+    <div className="py-5">
+    <Banner/>
 <FreeBook/>
+
+    </div>
 
     </>
   )

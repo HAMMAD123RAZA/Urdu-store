@@ -11,18 +11,20 @@ const SignUp = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:4040/user/signUp', {
+      const response = await axios.post('http://localhost:8080/user/signUp', {
         fullName,
         email,
         password
       });
-
+      localStorage.setItem("User",JSON.stringify(response.data))
       console.log(response.data); // Log the response from the server
       // Reset form fields after successful submission
       setFullName('');
       setEmail('');
       setPassword('');
       alert('User created successfully!');
+      window.location.reload()
+
     } catch (error) {
       console.error('Error:', error.response.data); // Log any errors
       alert('Error creating user. Please try again.');
@@ -50,11 +52,12 @@ const SignUp = () => {
                 <p className="font-bold">Email</p>
                 <input
                   type="email"
-                  placeholder="Email"
+                  placeholder="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)} 
                   required
                 />
+
               </div>
               <div className="py-3">
                 <p className="font-bold">Password</p>

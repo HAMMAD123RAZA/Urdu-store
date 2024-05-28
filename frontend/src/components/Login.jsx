@@ -10,22 +10,26 @@ const Login = () => {
   const loginSubmit=async(e)=>{
     e.preventDefault()
     try {
-      const data=await axios.post('http://localhost:4040/user/login',{
+      const data=await axios.post('http://localhost:8080/user/login',{
         email,password
     })
+
     console.log(data.data)
     localStorage.setItem("User",JSON.stringify(data.data))
 
     setEmail('');
     setPassword('');
     alert('User LoggedIn successfully!');
+    window.location.reload()
 
     } catch (error) {
       console.log(error)
     }
   }
+
   return (
     <>
+
 <button className="btn" onClick={()=>document.getElementById('my_modal_1').showModal()}>Login</button>
 <dialog id="my_modal_1" className="modal">
   <div className="modal-box">

@@ -1,8 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Login from './Login'
+import { useAuth } from '../Context/AuthProvider'
+import Logout from './Logout'
+import { FaBars } from "react-icons/fa";
+import Admin from './Admin';
+
 
 const Navbar = () => {
+  const [authUser,setAuthUser]=useAuth()
+
+  const [show,setShow]=useState(false)
+
+const handleClick=()=>{
+  setShow(!show)
+}
+
   return (
+    
     <div className='sticky max-w-screen-2xl container md:px-20 px-5'>
 <div className="navbar bg-base-100">
   <div className="navbar-start">
@@ -13,10 +27,8 @@ const Navbar = () => {
       <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
       <li><a href='/'>Home</a></li>
       <li><a href='/course'>Course</a></li>
-
-      <li><a>About </a></li>
-      <li><a>Contact</a></li>
-
+      <li><a href='/about' >About </a></li>
+      <li><a href='/contact' >Contact</a></li>
       </ul>
     </div>
     <a className=" text-xl cursor-pointer font-bold hover:text-gray-400 " >Book Store</a>
@@ -26,13 +38,17 @@ const Navbar = () => {
     <ul className="menu menu-horizontal px-1">
     <li><a href='/'>Home</a></li>
       <li><a href='/course'>Course</a></li>
-      <li><a>About </a></li>
-      <li><a>Contact</a></li>
-
+      <li><a href='/about' >About </a></li>
+      <li><a href='/contact' >Contact</a></li>
     </ul>
   </div>
-    {/* <button  className="btn bg-black text-white rounded-md hover:text-black">Login</button> */}
-    <Login/>
+{authUser?<Logout/>:<Login/>}
+<div className='' >
+<a href="/admin">Admin</a>
+</div>
+</div>  
+<div>
+
 </div>
 </div>
     </div>
