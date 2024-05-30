@@ -8,12 +8,12 @@ const About = () => {
   Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facere aut quibusdam laboriosam dolores sapiente magnam, excepturi minus eveniet ab itaque dicta, ea illum nihil aliquam? Voluptatem, vel blanditiis accusantium rerum dolorem odit?Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem ipsa saepe consequuntur?Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi labore aut corrupti sint perferendis?Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, laborum ad, ipsam earum provident quia autem nemo nam voluptatum mollitia voluptas!
 </div>
 <div  >
-  <img src="book.avif" className='h-60 w-80 md:px-0 md:py-0 px-5 my-5'  alt="" />
+  <img src="book.avif" className='h-60 w-80 md:px-0 md:py-0 px-5ve my-5'  alt="" />
 </div>
 
     </div>
 
-    <div className="grid grid-cols-1  md:grid-cols-4  px-10  py-5 ">
+    <div className="grid grid-cols-1  md:grid-cols-4 md:px-1 px-14  py-5 ">
       <div className='py-5 px-16' >
       <img src="ceo.jpg" alt="" className="hover:scale-x-[-1] cursor-pointer rounded-full w-32 h-32" />
       <h3 className='font-bold font-serif -2xl px-4 py-4'>Jon Doe</h3>
