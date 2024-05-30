@@ -1,5 +1,6 @@
 import BookModel from "../model/bookModel.js";
 
+
 export const createBook = async (req, res) => {
   try {
     const book = new BookModel({
@@ -50,7 +51,7 @@ export const findoneBook = async (req, res) => {
 
 export const getBook = async (req, res) => {
   try {
-    const books = await BookModel.find();
+    const books = await BookModel.find().sort({ createdAt: 'descending' });
     res.status(200).json(books);
   } catch (error) {
     console.error("Error getting books:", error);

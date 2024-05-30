@@ -44,7 +44,7 @@ const handleClick=()=>{
   </div>
 {authUser?<Logout/>:<Login/>}
 <div className='' >
-<a href="/admin">Admin</a>
+<a href="/admin"  className="btn my-4 py-5 px-8 bg-pink-500 text-white rounded-md hover:text-pink-600 hover:bg-white " >Admin</a>
 </div>
 </div>  
 <div>

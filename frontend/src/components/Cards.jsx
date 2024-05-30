@@ -1,11 +1,15 @@
 import React from 'react';
+import Delete from './Delete';
+// import Update from './Update';
 
 const Cards = ({ item }) => {
   return (
     <div className="card w-80 md:px-0 pr-3 bg-base-100 shadow-xl hover:scale-105 duration-400">
-      <img src={`http://localhost:8080${item.image}`} alt="Book" className='h-' />
+      <img src={`http://localhost:8080${item.image}`} alt="Book" className='' />
       <div className="card-body">
+         <div className='flex justify-end cursor-pointer ' ><div className='px-2 text-pink-500'><Delete bookId={item._id}  /></div></div>   
         <h2 className="card-title">
+          
           {item.name}
           <div className="badge badge-secondary">{item.category}</div>
         </h2>

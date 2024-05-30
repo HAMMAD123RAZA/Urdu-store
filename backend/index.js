@@ -9,7 +9,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
-// Serve static files from the uploads directory
+// Serves static files from the uploads directory
 app.use('/uploads', express.static('uploads'));
 
 mongoose

@@ -10,11 +10,31 @@ const Admin = () => {
     image: null
   });
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
+  const handleNameChange = (e) => {
     setFormData({
       ...formData,
-      [name]: value
+      name: e.target.value
+    });
+  };
+
+  const handleTitleChange = (e) => {
+    setFormData({
+      ...formData,
+      title: e.target.value
+    });
+  };
+
+  const handlePriceChange = (e) => {
+    setFormData({
+      ...formData,
+      price: e.target.value
+    });
+  };
+
+  const handleCategoryChange = (e) => {
+    setFormData({
+      ...formData,
+      category: e.target.value
     });
   };
 
@@ -41,47 +61,91 @@ const Admin = () => {
         }
       });
       console.log('Book created:', response.data);
+      // Clear the form after successful submission
+      setFormData({
+        name: '',
+        title: '',
+        price: '',
+        category: '',
+        image: null
+      });
     } catch (error) {
       console.error('Error creating book:', error);
     }
   };
 
   return (
-    <div>
-      <h2 className='text-center'>Admin, here you can perform CRUD</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>
-            Name:
-            <input type="text" name="name" value={formData.name} onChange={handleChange}  required />
-          </label>
-        </div>
-        <div>
-          <label>
-            Title:
-            <input type="text" name="title" value={formData.title} onChange={handleChange} required />
-          </label>
-        </div>
-        <div>
-          <label>
-            Price:
-            <input type="number" name="price" value={formData.price} onChange={handleChange} required />
-          </label>
-        </div>
-        <div>
-          <label>
-            Category:
-            <input type="text" name="category" value={formData.category} onChange={handleChange} required />
-          </label>
-        </div>
-        <div>
-          <label>
-            Image:
-            <input type="file" name="image" onChange={handleFileChange} required />
-          </label>
-        </div>
-        <button type="submit">Create Book</button>
-      </form>
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center px-4">
+      <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-lg">
+        <h2 className="text-center text-2xl font-bold mb-6">Admin - Create Book</h2>
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Name:
+            </label>
+            <input
+              type="text"
+              value={formData.name}
+              onChange={handleNameChange}
+              required
+              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Title:
+            </label>
+            <input
+              type="text"
+              value={formData.title}
+              onChange={handleTitleChange}
+              required
+              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Price:
+            </label>
+            <input
+              type="number"
+              value={formData.price}
+              onChange={handlePriceChange}
+              required
+              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Category:
+            </label>
+            <input
+              type="text"
+              value={formData.category}
+              onChange={handleCategoryChange}
+              required
+              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Image:
+            </label>
+            <input
+              type="file"
+              onChange={handleFileChange}
+              required
+              className="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100"
+            />
+          </div>
+          <button
+            type="submit"
+            className="w-full py-2 px-4 bg-pink-500 text-white rounded-md hover:bg-pink-600 focus:outline-none focus:bg-pink-600"
+          >
+            Create Book
+          </button>
+        </form>
+      </div>
     </div>
   );
 };

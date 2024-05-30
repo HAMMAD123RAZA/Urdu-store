@@ -18,7 +18,6 @@ export default function App() {
    const [authUser,setAuthUser]=useAuth()
   return (
     <>
-    
 <Router>
   <Navbar/>
   <Routes>
@@ -28,10 +27,9 @@ export default function App() {
 <Route path="/course" element={ authUser? <Course  />:<Navigate to="/signup" />} />
 <Route path="/signup" element={  <SignUp/>} />
 <Route path="/login" element={  <Login/>} />
-<Route path="/admin" element={<Admin/>} />
+<Route path="/admin" element={ authUser? <Admin/>:<Navigate to="/signup" />} />
   </Routes>
 </Router>
-
     </>
   )
 }
