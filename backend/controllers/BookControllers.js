@@ -19,15 +19,27 @@ export const createBook = async (req, res) => {
   }
 };
 
-export const updateBook = async (req, res) => {
+ export const updateBook = async (req, res) => {
   try {
-    const book = await BookModel.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    const updateData = { ...req.body };
+    
+    if (req.file) {
+      updateData.image = `/uploads/${req.file.filename}`;
+    }
+
+    const book = await BookModel.findByIdAndUpdate(req.params.id, updateData, { new: true });
+
+    if (!book) {
+      return res.status(404).json({ error: "Book not found" });
+    }
+
     res.status(200).json(book);
   } catch (error) {
     console.error("Error updating book:", error);
     res.status(500).json({ error: "Internal Server Error", details: error });
   }
 };
+
 
 export const deleteBook = async (req, res) => {
   try {

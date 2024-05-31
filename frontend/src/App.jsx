@@ -13,6 +13,7 @@ import About from "./components/About.jsx";
 import Contact from "./components/Contact.jsx";
 import Login from "./components/Login.jsx";
 import Admin from "./components/Admin.jsx";
+import Update from "./components/Update.jsx";
 
 export default function App() {
    const [authUser,setAuthUser]=useAuth()
@@ -28,6 +29,8 @@ export default function App() {
 <Route path="/signup" element={  <SignUp/>} />
 <Route path="/login" element={  <Login/>} />
 <Route path="/admin" element={ authUser? <Admin/>:<Navigate to="/signup" />} />
+<Route path="/update/:id" element={<Update/>} />
+<Route path="*" element={<h1 className="text-5xl font-bold text-center " >404 Not Found</h1>} />
   </Routes>
 </Router>
     </>

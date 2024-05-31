@@ -14,7 +14,7 @@ const upload = multer({ storage });
 
 router.get('/book', getBook);
 router.post('/book', upload.single('image'), createBook);
-router.put('/book/:id', updateBook);
+router.put('/book/:id', upload.single('image'), updateBook);
 router.delete('/book/:id', deleteBook);
 router.get('/book/:id', findoneBook);
 
