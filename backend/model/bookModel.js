@@ -7,9 +7,13 @@ const bookSchema = new Schema({
   title: String,
   price: Number,
   category: String,
-  image: String
+  image: String,
+  createdAt: {
+    type: Date,
+    default: Date.now
+  }
 });
-    
+
 const BookModel = model("bookModel", bookSchema);
 
 export default BookModel;

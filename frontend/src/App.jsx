@@ -14,6 +14,8 @@ import Contact from "./components/Contact.jsx";
 import Login from "./components/Login.jsx";
 import Admin from "./components/Admin.jsx";
 import Update from "./components/Update.jsx";
+import CartSlice from "../RTK/CartSlice.js";
+import Cart from "../RTK/Cart.jsx";
 
 export default function App() {
    const [authUser,setAuthUser]=useAuth()
@@ -30,6 +32,7 @@ export default function App() {
 <Route path="/login" element={  <Login/>} />
 <Route path="/admin" element={ authUser? <Admin/>:<Navigate to="/signup" />} />
 <Route path="/update/:id" element={<Update/>} />
+<Route path="/cart" element={<Cart/>} />
 <Route path="*" element={<h1 className="text-5xl font-bold text-center " >404 Not Found</h1>} />
   </Routes>
 </Router>

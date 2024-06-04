@@ -4,11 +4,13 @@ import { useAuth } from '../Context/AuthProvider'
 import Logout from './Logout'
 import { FaBars } from "react-icons/fa";
 import Admin from './Admin';
+import { useSelector } from 'react-redux';
+import { FaCartArrowDown } from "react-icons/fa";
 
 
 const Navbar = () => {
+  const items = useSelector((state) => state.cart.items);
   const [authUser,setAuthUser]=useAuth()
-
   const [show,setShow]=useState(false)
 
 const handleClick=()=>{
@@ -28,7 +30,7 @@ const handleClick=()=>{
       <li><a href='/'>Home</a></li>
       <li><a href='/course'>Course</a></li>
       <li><a href='/about' >About </a></li>
-      <li><a href='/contact' >Contact</a></li>
+      <li><a href='/cart' >Cart</a></li>
       </ul>
     </div>
     <a className=" text-xl cursor-pointer font-bold hover:text-gray-400 " >Book Store</a>
@@ -39,7 +41,7 @@ const handleClick=()=>{
     <li><a href='/'>Home</a></li>
       <li><a href='/course'>Course</a></li>
       <li><a href='/about' >About </a></li>
-      <li><a href='/contact' >Contact</a></li>
+      <li><a href='/cart' >Cart</a></li>
     </ul>
   </div>
 {authUser?<Logout/>:<Login/>}
@@ -48,7 +50,8 @@ const handleClick=()=>{
 </div>
 </div>  
 <div>
-
+  <FaCartArrowDown size={30} className='text-pink-500' />
+{items.length}
 </div>
 </div>
     </div>
